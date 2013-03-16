@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7716F4DD080074FB6A /* UIKit.framework */; };
+		5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7916F4DD080074FB6A /* Foundation.framework */; };
+		5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */; };
+		5E964D8216F4DD080074FB6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8016F4DD080074FB6A /* InfoPlist.strings */; };
+		5E964D8416F4DD080074FB6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D8316F4DD080074FB6A /* main.m */; };
+		5E964D8816F4DD080074FB6A /* CTRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */; };
+		5E964D8A16F4DD080074FB6A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8916F4DD080074FB6A /* Default.png */; };
+		5E964D8C16F4DD080074FB6A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8B16F4DD080074FB6A /* Default@2x.png */; };
+		5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */; };
+		5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */; };
+		5E964D9416F4DD090074FB6A /* CTRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D9316F4DD090074FB6A /* CTRViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5E964D7416F4DD080074FB6A /* Coffee Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E964D7716F4DD080074FB6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5E964D7916F4DD080074FB6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5E964D7F16F4DD080074FB6A /* Coffee Timer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Coffee Timer-Info.plist"; sourceTree = "<group>"; };
+		5E964D8116F4DD080074FB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5E964D8316F4DD080074FB6A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5E964D8516F4DD080074FB6A /* Coffee Timer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Coffee Timer-Prefix.pch"; sourceTree = "<group>"; };
+		5E964D8616F4DD080074FB6A /* CTRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRAppDelegate.h; sourceTree = "<group>"; };
+		5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRAppDelegate.m; sourceTree = "<group>"; };
+		5E964D8916F4DD080074FB6A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5E964D8B16F4DD080074FB6A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5E964D9016F4DD090074FB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		5E964D9216F4DD090074FB6A /* CTRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRViewController.h; sourceTree = "<group>"; };
+		5E964D9316F4DD090074FB6A /* CTRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E964D7116F4DD080074FB6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */,
+				5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */,
+				5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E964D6B16F4DD080074FB6A = {
+			isa = PBXGroup;
+			children = (
+				5E964D7D16F4DD080074FB6A /* Coffee Timer */,
+				5E964D7616F4DD080074FB6A /* Frameworks */,
+				5E964D7516F4DD080074FB6A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5E964D7516F4DD080074FB6A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E964D7416F4DD080074FB6A /* Coffee Timer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E964D7616F4DD080074FB6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E964D7716F4DD080074FB6A /* UIKit.framework */,
+				5E964D7916F4DD080074FB6A /* Foundation.framework */,
+				5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E964D7D16F4DD080074FB6A /* Coffee Timer */ = {
+			isa = PBXGroup;
+			children = (
+				5E964D8616F4DD080074FB6A /* CTRAppDelegate.h */,
+				5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */,
+				5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */,
+				5E964D9216F4DD090074FB6A /* CTRViewController.h */,
+				5E964D9316F4DD090074FB6A /* CTRViewController.m */,
+				5E964D7E16F4DD080074FB6A /* Supporting Files */,
+			);
+			path = "Coffee Timer";
+			sourceTree = "<group>";
+		};
+		5E964D7E16F4DD080074FB6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E964D7F16F4DD080074FB6A /* Coffee Timer-Info.plist */,
+				5E964D8016F4DD080074FB6A /* InfoPlist.strings */,
+				5E964D8316F4DD080074FB6A /* main.m */,
+				5E964D8516F4DD080074FB6A /* Coffee Timer-Prefix.pch */,
+				5E964D8916F4DD080074FB6A /* Default.png */,
+				5E964D8B16F4DD080074FB6A /* Default@2x.png */,
+				5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E964D7316F4DD080074FB6A /* Coffee Timer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E964D9716F4DD090074FB6A /* Build configuration list for PBXNativeTarget "Coffee Timer" */;
+			buildPhases = (
+				5E964D7016F4DD080074FB6A /* Sources */,
+				5E964D7116F4DD080074FB6A /* Frameworks */,
+				5E964D7216F4DD080074FB6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Coffee Timer";
+			productName = "Coffee Timer";
+			productReference = 5E964D7416F4DD080074FB6A /* Coffee Timer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E964D6C16F4DD080074FB6A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CTR;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ash Furrow";
+			};
+			buildConfigurationList = 5E964D6F16F4DD080074FB6A /* Build configuration list for PBXProject "Coffee Timer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5E964D6B16F4DD080074FB6A;
+			productRefGroup = 5E964D7516F4DD080074FB6A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E964D7316F4DD080074FB6A /* Coffee Timer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E964D7216F4DD080074FB6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E964D8216F4DD080074FB6A /* InfoPlist.strings in Resources */,
+				5E964D8A16F4DD080074FB6A /* Default.png in Resources */,
+				5E964D8C16F4DD080074FB6A /* Default@2x.png in Resources */,
+				5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */,
+				5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E964D7016F4DD080074FB6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E964D8416F4DD080074FB6A /* main.m in Sources */,
+				5E964D8816F4DD080074FB6A /* CTRAppDelegate.m in Sources */,
+				5E964D9416F4DD090074FB6A /* CTRViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5E964D8016F4DD080074FB6A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E964D8116F4DD080074FB6A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E964D9016F4DD090074FB6A /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E964D9516F4DD090074FB6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5E964D9616F4DD090074FB6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E964D9816F4DD090074FB6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Coffee Timer/Coffee Timer-Prefix.pch";
+				INFOPLIST_FILE = "Coffee Timer/Coffee Timer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5E964D9916F4DD090074FB6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Coffee Timer/Coffee Timer-Prefix.pch";
+				INFOPLIST_FILE = "Coffee Timer/Coffee Timer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E964D6F16F4DD080074FB6A /* Build configuration list for PBXProject "Coffee Timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E964D9516F4DD090074FB6A /* Debug */,
+				5E964D9616F4DD090074FB6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E964D9716F4DD090074FB6A /* Build configuration list for PBXNativeTarget "Coffee Timer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E964D9816F4DD090074FB6A /* Debug */,
+				5E964D9916F4DD090074FB6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E964D6C16F4DD080074FB6A /* Project object */;
+}

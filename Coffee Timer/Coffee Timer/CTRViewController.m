@@ -29,4 +29,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)buttonWasPressed:(id)sender
+{
+    NSLog(@"Button was pressed.");
+    
+    // Get the current date and time.
+    NSDate *date = [NSDate date];
+    
+    // Update the label.
+    self.label.text = [NSString stringWithFormat:@"Button pressed at %@", date];
+}
+
+-(IBAction)sliderValueChanged:(id)sender
+{
+    NSLog(@"Slider value changed to %f", self.slider.value);
+    
+    // Update our progressView's progress to match
+    // the slider's value.
+    self.progressView.progress = self.slider.value;
+}
+
 @end

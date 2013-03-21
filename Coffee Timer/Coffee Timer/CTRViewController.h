@@ -10,4 +10,11 @@
 
 @interface CTRViewController : UIViewController
 
+@property (nonatomic, strong) IBOutlet UILabel *label;
+@property (nonatomic, strong) IBOutlet UISlider *slider;
+@property (nonatomic, strong) IBOutlet UIProgressView *progressView;
+
+-(IBAction)buttonWasPressed:(id)sender;
+-(IBAction)sliderValueChanged:(id)sender;
+
 @end

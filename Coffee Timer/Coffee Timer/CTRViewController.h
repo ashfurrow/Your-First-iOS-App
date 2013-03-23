@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CTRTimerModel.h"
+
 @interface CTRViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UILabel *label;
-@property (nonatomic, strong) IBOutlet UISlider *slider;
-@property (nonatomic, strong) IBOutlet UIProgressView *progressView;
+
+@property (nonatomic, strong) CTRTimerModel *timerModel;
 
 -(IBAction)buttonWasPressed:(id)sender;
 -(IBAction)sliderValueChanged:(id)sender;

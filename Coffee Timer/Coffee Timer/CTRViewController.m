@@ -14,13 +14,17 @@
 
 @implementation CTRViewController
 
+#pragma mark - View Controller Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     NSLog(@"View is loaded.");
     
-    self.view.backgroundColor = [UIColor orangeColor];
+    self.title = @"Root";
+    
+    [self setupModel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -28,6 +32,41 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark Rotation Methods
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+#pragma mark - Private Methods
+
+-(void)setupModel
+{
+    self.timerModel = [[CTRTimerModel alloc] initWithCoffeeName:@"Columbian Coffee" duration:240];
+}
+
+-(void)updateUserInterface
+{
+    self.label.text = self.timerModel.coffeeName;
+}
+
+#pragma mark - Overridden Properties
+
+-(void)setTimerModel:(CTRTimerModel *)timerModel
+{
+    _timerModel = timerModel;
+    
+    [self updateUserInterface];
+}
+
+#pragma mark - Interaction Methods
 
 -(IBAction)buttonWasPressed:(id)sender
 {
@@ -38,15 +77,6 @@
     
     // Update the label.
     self.label.text = [NSString stringWithFormat:@"Button pressed at %@", date];
-}
-
--(IBAction)sliderValueChanged:(id)sender
-{
-    NSLog(@"Slider value changed to %f", self.slider.value);
-    
-    // Update our progressView's progress to match
-    // the slider's value.
-    self.progressView.progress = self.slider.value;
 }
 
 @end

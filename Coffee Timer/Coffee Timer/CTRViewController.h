@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CTRTimerModel.h"
+
 @interface CTRViewController : UIViewController
 
 @end

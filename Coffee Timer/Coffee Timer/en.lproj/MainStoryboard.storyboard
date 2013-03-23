@@ -25,6 +25,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonWasPressed:" destination="2" eventType="touchUpInside" id="cIB-bL-065"/>
+                                    <segue destination="knp-A6-FVZ" kind="push" id="sal-YC-7wM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,7 +35,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="-135"/>
+            <point key="canvasLocation" x="865" y="-135"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iKS-zB-Bup">
+            <objects>
+                <viewController id="knp-A6-FVZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uJ7-Rz-Aig">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cvT-4I-dok"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTx-QU-oMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1288" y="-135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K0M-ax-q4n">
@@ -57,10 +73,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonWasPressed:"/>
-                <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="progressView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
             </relationships>
         </class>
     </classes>

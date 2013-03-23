@@ -17,6 +17,5 @@
 @property (nonatomic, strong) CTRTimerModel *timerModel;
 
 -(IBAction)buttonWasPressed:(id)sender;
--(IBAction)sliderValueChanged:(id)sender;
 
 @end

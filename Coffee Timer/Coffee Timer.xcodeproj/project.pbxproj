@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */; };
+		5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */; };
 		5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7716F4DD080074FB6A /* UIKit.framework */; };
 		5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7916F4DD080074FB6A /* Foundation.framework */; };
 		5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */; };
@@ -18,9 +20,14 @@
 		5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */; };
 		5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */; };
 		5E964D9416F4DD090074FB6A /* CTRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D9316F4DD090074FB6A /* CTRViewController.m */; };
+		5E964DCD16FBD4890074FB6A /* CTRTimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E5FC4B516FE58E30086DA7E /* CTRTimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerDetailViewController.h; sourceTree = "<group>"; };
+		5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerDetailViewController.m; sourceTree = "<group>"; };
+		5E5FC4BA16FF506D0086DA7E /* CTRTimerEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerEditViewController.h; sourceTree = "<group>"; };
+		5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerEditViewController.m; sourceTree = "<group>"; };
 		5E964D7416F4DD080074FB6A /* Coffee Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E964D7716F4DD080074FB6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E964D7916F4DD080074FB6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +44,8 @@
 		5E964D9016F4DD090074FB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		5E964D9216F4DD090074FB6A /* CTRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTRViewController.h; sourceTree = "<group>"; };
 		5E964D9316F4DD090074FB6A /* CTRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTRViewController.m; sourceTree = "<group>"; };
+		5E964DCB16FBD4890074FB6A /* CTRTimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerModel.h; sourceTree = "<group>"; };
+		5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +62,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E5FC4B816FE58F30086DA7E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E964D9216F4DD090074FB6A /* CTRViewController.h */,
+				5E964D9316F4DD090074FB6A /* CTRViewController.m */,
+				5E5FC4B516FE58E30086DA7E /* CTRTimerDetailViewController.h */,
+				5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */,
+				5E5FC4BA16FF506D0086DA7E /* CTRTimerEditViewController.h */,
+				5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5E5FC4B916FE59010086DA7E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E964DCB16FBD4890074FB6A /* CTRTimerModel.h */,
+				5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		5E964D6B16F4DD080074FB6A = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +117,8 @@
 				5E964D8616F4DD080074FB6A /* CTRAppDelegate.h */,
 				5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */,
 				5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */,
-				5E964D9216F4DD090074FB6A /* CTRViewController.h */,
-				5E964D9316F4DD090074FB6A /* CTRViewController.m */,
+				5E5FC4B816FE58F30086DA7E /* View Controllers */,
+				5E5FC4B916FE59010086DA7E /* Models */,
 				5E964D7E16F4DD080074FB6A /* Supporting Files */,
 			);
 			path = "Coffee Timer";
@@ -177,6 +208,9 @@
 				5E964D8416F4DD080074FB6A /* main.m in Sources */,
 				5E964D8816F4DD080074FB6A /* CTRAppDelegate.m in Sources */,
 				5E964D9416F4DD090074FB6A /* CTRViewController.m in Sources */,
+				5E964DCD16FBD4890074FB6A /* CTRTimerModel.m in Sources */,
+				5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */,
+				5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +333,7 @@
 				5E964D9916F4DD090074FB6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

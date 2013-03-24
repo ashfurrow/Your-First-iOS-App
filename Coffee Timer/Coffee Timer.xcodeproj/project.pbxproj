@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */; };
+		5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */; };
 		5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7716F4DD080074FB6A /* UIKit.framework */; };
 		5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7916F4DD080074FB6A /* Foundation.framework */; };
 		5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		5E5FC4B516FE58E30086DA7E /* CTRTimerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerDetailViewController.h; sourceTree = "<group>"; };
 		5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerDetailViewController.m; sourceTree = "<group>"; };
+		5E5FC4BA16FF506D0086DA7E /* CTRTimerEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerEditViewController.h; sourceTree = "<group>"; };
+		5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerEditViewController.m; sourceTree = "<group>"; };
 		5E964D7416F4DD080074FB6A /* Coffee Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E964D7716F4DD080074FB6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E964D7916F4DD080074FB6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +69,8 @@
 				5E964D9316F4DD090074FB6A /* CTRViewController.m */,
 				5E5FC4B516FE58E30086DA7E /* CTRTimerDetailViewController.h */,
 				5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */,
+				5E5FC4BA16FF506D0086DA7E /* CTRTimerEditViewController.h */,
+				5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				5E964D9416F4DD090074FB6A /* CTRViewController.m in Sources */,
 				5E964DCD16FBD4890074FB6A /* CTRTimerModel.m in Sources */,
 				5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */,
+				5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

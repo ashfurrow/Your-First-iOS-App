@@ -7,6 +7,8 @@
 //
 
 #import "CTRViewController.h"
+#import "CTRTimerDetailViewController.h"
+#import "CTRTimerEditViewController.h"
 
 @interface CTRViewController ()
 
@@ -39,16 +41,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Rotation Methods
-
--(BOOL)shouldAutorotate
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    return NO;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
+    NSLog(@"Preparing for segue with identifier:%@", segue.identifier);
+    
+    if ([segue.identifier isEqualToString:@"pushDetail"])
+    {
+        CTRTimerDetailViewController *viewController = segue.destinationViewController;
+        viewController.timerModel = self.timerModel;
+    }
+    else if ([segue.identifier isEqualToString:@"editDetail"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)(navigationController.topViewController);
+        viewController.timerModel = self.timerModel;
+    }
 }
 
 #pragma mark - Private Methods

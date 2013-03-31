@@ -10,6 +10,8 @@
 
 @interface CTRTimerDetailViewController ()
 
+@property (nonatomic, strong) IBOutlet UILabel *durationLabel;
+
 @end
 
 @implementation CTRTimerDetailViewController

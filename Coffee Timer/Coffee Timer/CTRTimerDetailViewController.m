@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    self.title = self.timerModel.coffeeName;
+    self.title = self.timerModel.name;
     self.durationLabel.text = [NSString stringWithFormat:@"%d min %d sec",
                                self.timerModel.duration / 60,
                                self.timerModel.duration % 60];

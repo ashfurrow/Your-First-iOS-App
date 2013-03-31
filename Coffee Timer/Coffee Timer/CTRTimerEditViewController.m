@@ -29,7 +29,7 @@
     NSInteger numberOfMinutes = self.timerModel.duration / 60;
     NSInteger numberOfSeconds = self.timerModel.duration % 60;
     
-    self.nameField.text = self.timerModel.coffeeName;
+    self.nameField.text = self.timerModel.name;
     [self updateLabelsWithMinutes:numberOfMinutes seconds:numberOfSeconds];
     self.minutesSlider.value = numberOfMinutes;
     self.secondsSlider.value = numberOfSeconds;
@@ -45,7 +45,7 @@
 
 -(void)saveModel
 {
-    self.timerModel.coffeeName = self.nameField.text;
+    self.timerModel.name = self.nameField.text;
     self.timerModel.duration = (NSInteger)self.minutesSlider.value * 60 + (NSInteger)self.secondsSlider.value;
 }
 

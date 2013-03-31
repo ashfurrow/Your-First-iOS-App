@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Gm8-fH-rP6" style="IBUITableViewCellStyleDefault" id="Hpr-3G-hFm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Gm8-fH-rP6" style="IBUITableViewCellStyleDefault" id="Hpr-3G-hFm">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -116,7 +116,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Lk6-Yp-uP1" kind="modal" identifier="editDetail" id="DF8-Y9-0oR"/>
+                                    <segue destination="knp-A6-FVZ" kind="push" identifier="pushDetail" id="ESo-TZ-hxK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -125,18 +125,23 @@
                             <outlet property="delegate" destination="7cY-kK-TZu" id="gLS-bD-Xa8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="EXr-r4-hXP"/>
+                    <navigationItem key="navigationItem" id="EXr-r4-hXP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pi4-rs-Ica"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Lk6-Yp-uP1" kind="modal" identifier="editDetail" id="wxG-Gh-r5K"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jme-ZQ-pHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="911" y="356"/>
+            <point key="canvasLocation" x="911" y="350"/>
         </scene>
         <!--Timer Detail View Controller-->
         <scene sceneID="iKS-zB-Bup">
             <objects>
                 <viewController id="knp-A6-FVZ" customClass="CTRTimerDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uJ7-Rz-Aig">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fMc-He-8Gx">
@@ -174,30 +179,6 @@
             <point key="canvasLocation" x="451" y="356"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CTRTimerDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CTRTimerEditViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerEditViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonWasPressed:"/>
-                <relationship kind="action" name="doneButtonWasPressed:"/>
-                <relationship kind="action" name="sliderValueChanged:"/>
-                <relationship kind="outlet" name="minutesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="minutesSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="secondsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="secondsSlider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-        <class className="CTRTimerListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

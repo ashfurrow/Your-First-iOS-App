@@ -8,7 +8,14 @@
 
 #import "CTRTimerListViewController.h"
 #import "CTRTimerDetailViewController.h"
+#import "CTRTimerEditViewController.h"
 #import "CTRTimerModel.h"
+
+enum {
+    CTRTimerListCoffeeSection = 0,
+    CTRTimerListTeaSection,
+    CTRTimerListNumberOfSections
+};
 
 @interface CTRTimerListViewController ()
 
@@ -34,38 +41,51 @@
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([self presentedViewController] != nil)
+    {
+        [self.tableView reloadData];
+    }
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     UITableViewCell *cell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     
+    // Determine the model represented by the tapped cell. 
     CTRTimerModel *model;
-    
-    if (indexPath.section == 0)
+    if (indexPath.section == CTRTimerListCoffeeSection)
     {
         model = self.coffeeTimers[indexPath.row];
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.section == CTRTimerListTeaSection)
     {
         model = self.teaTimers[indexPath.row];
     }
     
+    // Determine which segue is being prepared for
     if ([segue.identifier isEqualToString:@"pushDetail"])
     {
         CTRTimerDetailViewController *viewController = segue.destinationViewController;
+        viewController.timerModel = model;
+    }
+    else if ([segue.identifier isEqualToString:@"editDetail"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
         viewController.timerModel = model;
     }
 }
 
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    if ([identifier isEqualToString:@"editDetail"])
+    if ([identifier isEqualToString:@"pushDetail"])
     {
         if (self.tableView.isEditing)
-        {
-            return YES;
-        }
-        else
         {
             return NO;
         }
@@ -74,23 +94,41 @@
     return YES;
 }
 
+#pragma mark - Private Methods
+
+-(CTRTimerModel *)timerModelForIndexPath:(NSIndexPath *)indexPath
+{
+    CTRTimerModel *timerModel;
+    if (indexPath.section == CTRTimerListCoffeeSection)
+    {
+        // The coffee timer section
+        timerModel = self.coffeeTimers[indexPath.row];
+    }
+    else if (indexPath.section == CTRTimerListTeaSection)
+    {
+        timerModel = self.teaTimers[indexPath.row];
+    }
+    
+    return timerModel;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections, in our case, the number of arrays we're displaying
-    return 2;
+    return CTRTimerListNumberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section == 0)
+    if (section == CTRTimerListCoffeeSection)
     {
         // The coffee timer section
         return self.coffeeTimers.count;
     }
-    else if (section == 1)
+    else if (section == CTRTimerListTeaSection)
     {
         // The tea timer section
         return self.teaTimers.count;
@@ -105,18 +143,8 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    CTRTimerModel *timerModel;
+    CTRTimerModel *timerModel = [self timerModelForIndexPath:indexPath];
     // Configure the cell
-    if (indexPath.section == 0)
-    {
-        // The coffee timer section
-        timerModel = self.coffeeTimers[indexPath.row];
-    }
-    else if (indexPath.section == 1)
-    {
-        timerModel = self.teaTimers[indexPath.row];
-    }
-    
     cell.textLabel.text = timerModel.name;
     
     return cell;
@@ -124,12 +152,12 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
+    if (section == CTRTimerListCoffeeSection)
     {
         // The coffee timer section
         return @"Coffees";
     }
-    else if (section == 1)
+    else if (section == CTRTimerListTeaSection)
     {
         return @"Teas";
     }
@@ -139,37 +167,114 @@
 }
 
 
-
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        
+        if (indexPath.section == CTRTimerListCoffeeSection)
+        {
+            NSMutableArray *mutableArray = [self.coffeeTimers mutableCopy];
+            [mutableArray removeObjectAtIndex:indexPath.row];
+            self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
+        }
+        else if (indexPath.section == CTRTimerListTeaSection)
+        {
+            NSMutableArray *mutableArray = [self.teaTimers mutableCopy];
+            [mutableArray removeObjectAtIndex:indexPath.row];
+            self.teaTimers = [NSArray arrayWithArray:mutableArray];
+        }
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
+    NSMutableArray *mutableArray;
+    if (sourceIndexPath.section == CTRTimerListCoffeeSection)
+    {
+        mutableArray = [self.coffeeTimers mutableCopy];
+    }
+    else if (sourceIndexPath.section == CTRTimerListTeaSection)
+    {
+        mutableArray = [self.teaTimers mutableCopy];
+    }
+    
+    CTRTimerModel *model = mutableArray[sourceIndexPath.row];
+    [mutableArray removeObjectAtIndex:sourceIndexPath.row];
+    [mutableArray insertObject:model atIndex:destinationIndexPath.row];
+    
+    if (sourceIndexPath.section == CTRTimerListCoffeeSection)
+    {
+        self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
+    }
+    else if (sourceIndexPath.section == CTRTimerListTeaSection)
+    {
+        self.teaTimers = [NSArray arrayWithArray:mutableArray];
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isEditing)
+    {
+        [self performSegueWithIdentifier:@"editDetail" sender:[self.tableView cellForRowAtIndexPath:indexPath]];
+    }
+}
 
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    if ([NSStringFromSelector(action) isEqualToString:@"copy:"])
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
+{
+    CTRTimerModel *timerModel = [self timerModelForIndexPath:indexPath];
+    
+    UIPasteboard *sharedPasteboard = [UIPasteboard generalPasteboard];
+    [sharedPasteboard setString:timerModel.name];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    // If the source and destination index paths are the same,
+    // then return the proposed index path
+    if (sourceIndexPath.section == proposedDestinationIndexPath.section)
+    {
+        return proposedDestinationIndexPath;
+    }
+    
+    // The sections are different, which we want to disallow.
+    
+    if (sourceIndexPath.section == CTRTimerListCoffeeSection)
+    {
+        // This is coming from the coffee section, so return
+        // the last index path in that section.
+        
+        return [NSIndexPath indexPathForRow:self.coffeeTimers.count - 1 inSection:CTRTimerListCoffeeSection];
+    }
+    else if (sourceIndexPath.section == CTRTimerListTeaSection)
+    {
+        // This is coming from the tea section, so return
+        // the first index path in that section.
+        return [NSIndexPath indexPathForRow:0 inSection:CTRTimerListTeaSection];
+    }
+    
+    // Just to silence the compiler
+    return sourceIndexPath;
+}
 
 @end

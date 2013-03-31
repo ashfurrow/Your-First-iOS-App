@@ -24,6 +24,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonWasPressed:" destination="2" eventType="touchUpInside" id="Sog-6r-pxM"/>
+                                    <segue destination="knp-A6-FVZ" kind="push" id="sal-YC-7wM"/>
                                     <action selector="buttonWasPressed:" destination="2" eventType="touchUpInside" id="cIB-bL-065"/>
                                     <segue destination="knp-A6-FVZ" kind="push" identifier="pushDetail" id="sal-YC-7wM"/>
                                 </connections>

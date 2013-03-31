@@ -12,6 +12,12 @@
 
 @interface CTRViewController ()
 
+@property (nonatomic, strong) IBOutlet UILabel *label;
+@property (nonatomic, strong) IBOutlet UISlider *slider;
+@property (nonatomic, strong) IBOutlet UIProgressView *progressView;
+
+@property (nonatomic, strong) CTRTimerModel *timerModel;
+
 @end
 
 @implementation CTRViewController

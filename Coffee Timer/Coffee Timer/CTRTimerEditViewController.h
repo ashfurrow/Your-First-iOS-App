@@ -13,14 +13,4 @@
 
 @property (nonatomic, strong) CTRTimerModel *timerModel;
 
-@property (nonatomic, strong) IBOutlet UITextField *nameField;
-@property (nonatomic, strong) IBOutlet UILabel *minutesLabel;
-@property (nonatomic, strong) IBOutlet UILabel *secondsLabel;
-@property (nonatomic, strong) IBOutlet UISlider *minutesSlider;
-@property (nonatomic, strong) IBOutlet UISlider *secondsSlider;
-
--(IBAction)cancelButtonWasPressed:(id)sender;
--(IBAction)doneButtonWasPressed:(id)sender;
--(IBAction)sliderValueChanged:(id)sender;
-
 @end

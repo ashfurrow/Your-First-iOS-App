@@ -12,10 +12,4 @@
 
 @interface CTRViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UILabel *label;
-
-@property (nonatomic, strong) CTRTimerModel *timerModel;
-
--(IBAction)buttonWasPressed:(id)sender;
-
 @end

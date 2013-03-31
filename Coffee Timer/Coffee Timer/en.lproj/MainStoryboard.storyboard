@@ -24,7 +24,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonWasPressed:" destination="2" eventType="touchUpInside" id="cIB-bL-065"/>
+                                    <action selector="buttonWasPressed:" destination="2" eventType="touchUpInside" id="Sog-6r-pxM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czQ-XO-WHH">

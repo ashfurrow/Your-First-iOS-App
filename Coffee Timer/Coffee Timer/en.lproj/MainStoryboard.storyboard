@@ -62,6 +62,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="YRz-5X-uQ2">
+                                <rect key="frame" x="20" y="176" width="280" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Coffee"/>
+                                    <segment title="Tea"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -83,6 +91,7 @@
                         <outlet property="nameField" destination="DdR-29-iNw" id="0fS-dG-N3A"/>
                         <outlet property="secondsLabel" destination="JFJ-sP-t1h" id="E0a-uq-FkG"/>
                         <outlet property="secondsSlider" destination="77a-3O-cS3" id="rol-7i-x4T"/>
+                        <outlet property="timerTypeSegmentedControl" destination="YRz-5X-uQ2" id="dZD-TZ-Z3V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1N-oi-rtJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -126,7 +135,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="EXr-r4-hXP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pi4-rs-Ica"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pi4-rs-Ica">
+                            <connections>
+                                <segue destination="Lk6-Yp-uP1" kind="modal" identifier="newTimer" id="zeH-QT-gAk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Lk6-Yp-uP1" kind="modal" identifier="editDetail" id="wxG-Gh-r5K"/>
@@ -179,9 +192,37 @@
             <point key="canvasLocation" x="451" y="356"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CTRTimerDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CTRTimerEditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelButtonWasPressed:"/>
+                <relationship kind="action" name="doneButtonWasPressed:"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
+                <relationship kind="outlet" name="minutesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="minutesSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="nameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="secondsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="secondsSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="timerTypeSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="CTRTimerListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CTRTimerListViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="zeH-QT-gAk"/>
+    </inferredMetricsTieBreakers>
 </document>

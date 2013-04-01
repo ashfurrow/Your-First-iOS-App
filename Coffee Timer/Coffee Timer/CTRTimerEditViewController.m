@@ -15,6 +15,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *secondsLabel;
 @property (nonatomic, strong) IBOutlet UISlider *minutesSlider;
 @property (nonatomic, strong) IBOutlet UISlider *secondsSlider;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *timerTypeSegmentedControl;
 
 @end
 
@@ -33,6 +34,15 @@
     [self updateLabelsWithMinutes:numberOfMinutes seconds:numberOfSeconds];
     self.minutesSlider.value = numberOfMinutes;
     self.secondsSlider.value = numberOfSeconds;
+    
+    if (self.timerType == CTRTimerEditViewControllerTimerTypeCoffee)
+    {
+        self.timerTypeSegmentedControl.selectedSegmentIndex = 0;
+    }
+    else
+    {
+        self.timerTypeSegmentedControl.selectedSegmentIndex = 1;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,12 +84,26 @@
 
 -(IBAction)cancelButtonWasPressed:(id)sender
 {
+    [self.delegate timerEditViewControllerDidCancel:self];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)doneButtonWasPressed:(id)sender
 {
     [self saveModel];
+    
+    CTRTimerEditViewControllerTimerType type;
+    
+    if (self.timerTypeSegmentedControl.selectedSegmentIndex == 0)
+    {
+        type = CTRTimerEditViewControllerTimerTypeCoffee;
+    }
+    else
+    {
+        type = CTRTimerEditViewControllerTimerTypeTea;
+    }
+    
+    [self.delegate timerEditViewController:self didSaveBeverageOfType:type];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

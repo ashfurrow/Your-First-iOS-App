@@ -53,31 +53,54 @@ enum {
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UITableViewCell *cell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    // Determine the model represented by the tapped cell. 
-    CTRTimerModel *model;
-    if (indexPath.section == CTRTimerListCoffeeSection)
+    if ([sender isKindOfClass:[UITableViewCell class]])
     {
-        model = self.coffeeTimers[indexPath.row];
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        // Determine the model represented by the tapped cell.
+        CTRTimerModel *model;
+        if (indexPath.section == CTRTimerListCoffeeSection)
+        {
+            model = self.coffeeTimers[indexPath.row];
+        }
+        else if (indexPath.section == CTRTimerListTeaSection)
+        {
+            model = self.teaTimers[indexPath.row];
+        }
+        
+        // Determine which segue is being prepared for
+        if ([segue.identifier isEqualToString:@"pushDetail"])
+        {
+            CTRTimerDetailViewController *viewController = segue.destinationViewController;
+            viewController.timerModel = model;
+        }
+        else if ([segue.identifier isEqualToString:@"editDetail"])
+        {
+            UINavigationController *navigationController = segue.destinationViewController;
+            CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
+            viewController.delegate = self;
+            if (indexPath.section == CTRTimerListCoffeeSection)
+            {
+                viewController.timerType = CTRTimerEditViewControllerTimerTypeCoffee;
+            }
+            else if (indexPath.section == CTRTimerListTeaSection)
+            {
+                viewController.timerType = CTRTimerEditViewControllerTimerTypeTea;
+            }
+            viewController.timerModel = model;
+        }
     }
-    else if (indexPath.section == CTRTimerListTeaSection)
+    else
     {
-        model = self.teaTimers[indexPath.row];
-    }
-    
-    // Determine which segue is being prepared for
-    if ([segue.identifier isEqualToString:@"pushDetail"])
-    {
-        CTRTimerDetailViewController *viewController = segue.destinationViewController;
-        viewController.timerModel = model;
-    }
-    else if ([segue.identifier isEqualToString:@"editDetail"])
-    {
-        UINavigationController *navigationController = segue.destinationViewController;
-        CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
-        viewController.timerModel = model;
+        if ([segue.identifier isEqualToString:@"newTimer"])
+        {
+            UINavigationController *navigationController = segue.destinationViewController;
+            CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
+            viewController.creatingNewTimer = YES;
+            viewController.delegate = self;
+            viewController.timerModel = [[CTRTimerModel alloc] initWithName:@"" duration:240];
+        }
     }
 }
 
@@ -275,6 +298,46 @@ enum {
     
     // Just to silence the compiler
     return sourceIndexPath;
+}
+
+#pragma mark - CTRTimerEditViewControllerDelegateMethods
+
+-(void)timerEditViewController:(CTRTimerEditViewController *)viewController didSaveBeverageOfType:(CTRTimerEditViewControllerTimerType)type
+{
+    if (type == CTRTimerEditViewControllerTimerTypeCoffee)
+    {
+        if (![self.coffeeTimers containsObject:viewController.timerModel])
+        {
+            self.coffeeTimers = [self.coffeeTimers arrayByAddingObject:viewController.timerModel];
+        }
+        
+        if ([self.teaTimers containsObject:viewController.timerModel])
+        {
+            NSMutableArray *mutableArray = [self.teaTimers mutableCopy];
+            [mutableArray removeObject:viewController.timerModel];
+            self.teaTimers = [NSArray arrayWithArray:mutableArray];
+        }
+    }
+    else if (type == CTRTimerEditViewControllerTimerTypeTea)
+    {
+        if (![self.teaTimers containsObject:viewController.timerModel])
+        {
+            self.teaTimers = [self.teaTimers arrayByAddingObject:viewController.timerModel];
+        }
+        
+        
+        if ([self.coffeeTimers containsObject:viewController.timerModel])
+        {
+            NSMutableArray *mutableArray = [self.coffeeTimers mutableCopy];
+            [mutableArray removeObject:viewController.timerModel];
+            self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
+        }
+    }
+}
+
+-(void)timerEditViewControllerDidCancel:(CTRTimerEditViewController *)viewController
+{
+    // Nothing to do for now
 }
 
 @end

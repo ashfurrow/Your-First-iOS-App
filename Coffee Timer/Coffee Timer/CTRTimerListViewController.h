@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CTRTimerListViewController : UITableViewController
+#import "CTRTimerEditViewController.h"
+
+@interface CTRTimerListViewController : UITableViewController <CTRTimerEditViewControllerDelegate>
 
 @end

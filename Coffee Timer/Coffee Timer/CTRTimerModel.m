@@ -10,13 +10,14 @@
 
 @implementation CTRTimerModel
 
--(id)initWithName:(NSString *)name duration:(NSInteger)duration
+-(id)initWithName:(NSString *)name duration:(NSInteger)duration type:(CTRTimerModelType)type
 {
     self = [super init];
     if (self == nil) return nil;
     
     self.name = name;
     self.duration = duration;
+    self.type = type;
     
     return self;
 }

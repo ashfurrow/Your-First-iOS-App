@@ -20,6 +20,7 @@ typedef enum {
 @property (nonatomic, assign) CTRTimerModelType type;
 
 -(id)initWithName:(NSString *)name
-         duration:(NSInteger)duration;
+         duration:(NSInteger)duration
+             type:(CTRTimerModelType)type;
 
 @end

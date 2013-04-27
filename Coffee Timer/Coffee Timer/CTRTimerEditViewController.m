@@ -35,7 +35,7 @@
     self.minutesSlider.value = numberOfMinutes;
     self.secondsSlider.value = numberOfSeconds;
     
-    if (self.timerType == CTRTimerEditViewControllerTimerTypeCoffee)
+    if (self.timerModel.type == CTRTimerModelTypeCoffee)
     {
         self.timerTypeSegmentedControl.selectedSegmentIndex = 0;
     }
@@ -92,18 +92,18 @@
 {
     [self saveModel];
     
-    CTRTimerEditViewControllerTimerType type;
+    CTRTimerModelType type;
     
     if (self.timerTypeSegmentedControl.selectedSegmentIndex == 0)
     {
-        type = CTRTimerEditViewControllerTimerTypeCoffee;
+        type = CTRTimerModelTypeCoffee;
     }
     else
     {
-        type = CTRTimerEditViewControllerTimerTypeTea;
+        type = CTRTimerModelTypeTea;
     }
     
-    [self.delegate timerEditViewController:self didSaveBeverageOfType:type];
+    [self.delegate timerEditViewControllerDidSaveTimerModel:self];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

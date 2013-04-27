@@ -80,14 +80,7 @@ enum {
             UINavigationController *navigationController = segue.destinationViewController;
             CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
             viewController.delegate = self;
-            if (indexPath.section == CTRTimerListCoffeeSection)
-            {
-                viewController.timerType = CTRTimerEditViewControllerTimerTypeCoffee;
-            }
-            else if (indexPath.section == CTRTimerListTeaSection)
-            {
-                viewController.timerType = CTRTimerEditViewControllerTimerTypeTea;
-            }
+            
             viewController.timerModel = model;
         }
     }
@@ -302,9 +295,11 @@ enum {
 
 #pragma mark - CTRTimerEditViewControllerDelegateMethods
 
--(void)timerEditViewController:(CTRTimerEditViewController *)viewController didSaveBeverageOfType:(CTRTimerEditViewControllerTimerType)type
+-(void)timerEditViewControllerDidSaveTimerModel:(CTRTimerEditViewController *)viewController
 {
-    if (type == CTRTimerEditViewControllerTimerTypeCoffee)
+    CTRTimerModelType type = viewController.timerModel.type;
+    
+    if (type == CTRTimerModelTypeCoffee)
     {
         if (![self.coffeeTimers containsObject:viewController.timerModel])
         {
@@ -318,7 +313,7 @@ enum {
             self.teaTimers = [NSArray arrayWithArray:mutableArray];
         }
     }
-    else if (type == CTRTimerEditViewControllerTimerTypeTea)
+    else if (type == CTRTimerModelTypeTea)
     {
         if (![self.teaTimers containsObject:viewController.timerModel])
         {

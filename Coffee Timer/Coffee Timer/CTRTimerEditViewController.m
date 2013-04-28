@@ -55,8 +55,20 @@
 
 -(void)saveModel
 {
+    CTRTimerModelType type;
+    
+    if (self.timerTypeSegmentedControl.selectedSegmentIndex == 0)
+    {
+        type = CTRTimerModelTypeCoffee;
+    }
+    else
+    {
+        type = CTRTimerModelTypeTea;
+    }
+    
     self.timerModel.name = self.nameField.text;
     self.timerModel.duration = (NSInteger)self.minutesSlider.value * 60 + (NSInteger)self.secondsSlider.value;
+    self.timerModel.type = type;
 }
 
 -(void)updateLabelsWithMinutes:(NSInteger)numberOfMinutes seconds:(NSInteger)numberOfSeconds
@@ -91,17 +103,6 @@
 -(IBAction)doneButtonWasPressed:(id)sender
 {
     [self saveModel];
-    
-    CTRTimerModelType type;
-    
-    if (self.timerTypeSegmentedControl.selectedSegmentIndex == 0)
-    {
-        type = CTRTimerModelTypeCoffee;
-    }
-    else
-    {
-        type = CTRTimerModelTypeTea;
-    }
     
     [self.delegate timerEditViewControllerDidSaveTimerModel:self];
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

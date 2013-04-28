@@ -113,6 +113,7 @@
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self notifyUser:@"Coffee Timer Completed!"];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
+        [self.navigationItem setHidesBackButton:NO animated:YES];
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "CTRTimerDetailViewController.h"
+#import "CTRTimerEditViewController.h"
 
 @interface CTRTimerDetailViewController ()
 
@@ -23,6 +24,8 @@
 
 @implementation CTRTimerDetailViewController
 
+#pragma mark - View Controller Lifecycle Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +35,22 @@
                                self.timerModel.duration / 60,
                                self.timerModel.duration % 60];
     self.countdownLabel.text = @"Timer not started.";
+    
+    [self.timerModel addObserver:self
+                      forKeyPath:@"duration"
+                         options:NSKeyValueObservingOptionNew
+                         context:nil];
+    
+    [self.timerModel addObserver:self
+                      forKeyPath:@"name"
+                         options:NSKeyValueObservingOptionNew
+                         context:nil];
+}
+
+-(void)dealloc
+{
+    [self.timerModel removeObserver:self forKeyPath:@"duration"];
+    [self.timerModel removeObserver:self forKeyPath:@"name"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,6 +58,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"editDetail"])
+    {
+        UINavigationController *navigationController = segue.destinationViewController;
+        CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
+        viewController.timerModel = self.timerModel;
+    }
+}
+
+#pragma mark - User Interaction Methods
 
 -(IBAction)buttonPressed:(id)sender
 {
@@ -75,6 +106,8 @@
     }
 }
 
+#pragma mark - Private Methods
+
 -(void)notifyUser:(NSString *)alert
 {
     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
@@ -96,6 +129,8 @@
     }
 }
 
+#pragma mark - NSTimer Methods
+
 -(void)timerFired:(NSTimer *)timer
 {
     self.timeRemaining -= 1;
@@ -114,6 +149,25 @@
         [self notifyUser:@"Coffee Timer Completed!"];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
         [self.navigationItem setHidesBackButton:NO animated:YES];
+    }
+}
+
+#pragma mark - KVO methods
+
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(id)object
+                       change:(NSDictionary *)change
+                      context:(void *)context
+{
+    if ([keyPath isEqualToString:@"duration"])
+    {
+        self.durationLabel.text = [NSString stringWithFormat:@"%d min %d sec",
+                                   self.timerModel.duration / 60,
+                                   self.timerModel.duration % 60];
+    }
+    else if ([keyPath isEqualToString:@"name"])
+    {
+        self.title = self.timerModel.name;
     }
 }
 

@@ -10,12 +10,12 @@
 
 @interface CTRTimerEditViewController ()
 
-@property (nonatomic, strong) IBOutlet UITextField *nameField;
-@property (nonatomic, strong) IBOutlet UILabel *minutesLabel;
-@property (nonatomic, strong) IBOutlet UILabel *secondsLabel;
-@property (nonatomic, strong) IBOutlet UISlider *minutesSlider;
-@property (nonatomic, strong) IBOutlet UISlider *secondsSlider;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *timerTypeSegmentedControl;
+@property (nonatomic, weak) IBOutlet UITextField *nameField;
+@property (nonatomic, weak) IBOutlet UILabel *minutesLabel;
+@property (nonatomic, weak) IBOutlet UILabel *secondsLabel;
+@property (nonatomic, weak) IBOutlet UISlider *minutesSlider;
+@property (nonatomic, weak) IBOutlet UISlider *secondsSlider;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *timerTypeSegmentedControl;
 
 @end
 

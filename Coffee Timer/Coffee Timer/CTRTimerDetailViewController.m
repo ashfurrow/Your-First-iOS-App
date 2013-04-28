@@ -11,11 +11,11 @@
 
 @interface CTRTimerDetailViewController ()
 
-@property (nonatomic, strong) IBOutlet UILabel *durationLabel;
-@property (nonatomic, strong) IBOutlet UILabel *countdownLabel;
-@property (nonatomic, strong) IBOutlet UIButton *startStopButton;
+@property (nonatomic, weak) IBOutlet UILabel *durationLabel;
+@property (nonatomic, weak) IBOutlet UILabel *countdownLabel;
+@property (nonatomic, weak) IBOutlet UIButton *startStopButton;
 
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, weak) NSTimer *timer;
 @property (nonatomic, assign) NSInteger timeRemaining;
 
 @property (nonatomic, assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
@@ -81,7 +81,6 @@
         self.countdownLabel.text = @"Timer stopped.";
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self.timer invalidate];
-        self.timer = nil;
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
     }
     else
@@ -144,7 +143,6 @@
     {
         self.countdownLabel.text = @"Timer completed.";
         [self.timer invalidate];
-        self.timer = nil;
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self notifyUser:@"Coffee Timer Completed!"];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];

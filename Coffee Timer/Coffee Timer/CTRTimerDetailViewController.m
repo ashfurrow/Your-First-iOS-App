@@ -166,7 +166,7 @@
     {
         if (!self.timer)
         {
-            self.countdownLabel.text = [NSString stringWithFormat:@"%d min %d sec",
+            self.countdownLabel.text = [NSString stringWithFormat:@"%d:%d",
                                        self.timerModel.duration / 60,
                                        self.timerModel.duration % 60];
         }

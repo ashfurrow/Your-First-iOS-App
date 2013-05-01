@@ -10,6 +10,14 @@
 		5E127FE91708C00900FEBC11 /* CTRTimerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E127FE81708C00900FEBC11 /* CTRTimerListViewController.m */; };
 		5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */; };
 		5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */; };
+		5E6CA0A21730973000E4EC3A /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA09F1730973000E4EC3A /* stop@2x.png */; };
+		5E6CA0A31730973000E4EC3A /* start@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0A01730973000E4EC3A /* start@2x.png */; };
+		5E6CA0A41730973000E4EC3A /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0A11730973000E4EC3A /* background@2x.png */; };
+		5E6CA0A71730A68D00E4EC3A /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0A61730A68D00E4EC3A /* Icon@2x.png */; };
+		5E6CA0A91730A69300E4EC3A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0A81730A69300E4EC3A /* Icon.png */; };
+		5E6CA0AB1730AA1500E4EC3A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0AA1730AA1500E4EC3A /* Default.png */; };
+		5E6CA0AD1730AA1A00E4EC3A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0AC1730AA1A00E4EC3A /* Default@2x.png */; };
+		5E6CA0AF1730AA2100E4EC3A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E6CA0AE1730AA2100E4EC3A /* Default-568h@2x.png */; };
 		5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7716F4DD080074FB6A /* UIKit.framework */; };
 		5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7916F4DD080074FB6A /* Foundation.framework */; };
 		5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */; };
@@ -30,6 +38,14 @@
 		5E5FC4B616FE58E30086DA7E /* CTRTimerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerDetailViewController.m; sourceTree = "<group>"; };
 		5E5FC4BA16FF506D0086DA7E /* CTRTimerEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerEditViewController.h; sourceTree = "<group>"; };
 		5E5FC4BB16FF506D0086DA7E /* CTRTimerEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerEditViewController.m; sourceTree = "<group>"; };
+		5E6CA09F1730973000E4EC3A /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
+		5E6CA0A01730973000E4EC3A /* start@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start@2x.png"; sourceTree = "<group>"; };
+		5E6CA0A11730973000E4EC3A /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		5E6CA0A61730A68D00E4EC3A /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		5E6CA0A81730A69300E4EC3A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		5E6CA0AA1730AA1500E4EC3A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5E6CA0AC1730AA1A00E4EC3A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5E6CA0AE1730AA2100E4EC3A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5E964D7416F4DD080074FB6A /* Coffee Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E964D7716F4DD080074FB6A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E964D7916F4DD080074FB6A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,9 +100,24 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		5E6CA0A51730973900E4EC3A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5E6CA09F1730973000E4EC3A /* stop@2x.png */,
+				5E6CA0A01730973000E4EC3A /* start@2x.png */,
+				5E6CA0A11730973000E4EC3A /* background@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		5E964D6B16F4DD080074FB6A = {
 			isa = PBXGroup;
 			children = (
+				5E6CA0AE1730AA2100E4EC3A /* Default-568h@2x.png */,
+				5E6CA0AC1730AA1A00E4EC3A /* Default@2x.png */,
+				5E6CA0AA1730AA1500E4EC3A /* Default.png */,
+				5E6CA0A81730A69300E4EC3A /* Icon.png */,
+				5E6CA0A61730A68D00E4EC3A /* Icon@2x.png */,
 				5E964D7D16F4DD080074FB6A /* Coffee Timer */,
 				5E964D7616F4DD080074FB6A /* Frameworks */,
 				5E964D7516F4DD080074FB6A /* Products */,
@@ -114,6 +145,7 @@
 		5E964D7D16F4DD080074FB6A /* Coffee Timer */ = {
 			isa = PBXGroup;
 			children = (
+				5E6CA0A51730973900E4EC3A /* Images */,
 				5E964D8616F4DD080074FB6A /* CTRAppDelegate.h */,
 				5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */,
 				5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */,
@@ -195,6 +227,14 @@
 				5E964D8C16F4DD080074FB6A /* Default@2x.png in Resources */,
 				5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */,
 				5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */,
+				5E6CA0A21730973000E4EC3A /* stop@2x.png in Resources */,
+				5E6CA0A31730973000E4EC3A /* start@2x.png in Resources */,
+				5E6CA0A41730973000E4EC3A /* background@2x.png in Resources */,
+				5E6CA0A71730A68D00E4EC3A /* Icon@2x.png in Resources */,
+				5E6CA0A91730A69300E4EC3A /* Icon.png in Resources */,
+				5E6CA0AB1730AA1500E4EC3A /* Default.png in Resources */,
+				5E6CA0AD1730AA1A00E4EC3A /* Default@2x.png in Resources */,
+				5E6CA0AF1730AA2100E4EC3A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

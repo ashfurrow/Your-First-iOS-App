@@ -11,7 +11,6 @@
 
 @interface CTRTimerDetailViewController ()
 
-@property (nonatomic, weak) IBOutlet UILabel *durationLabel;
 @property (nonatomic, weak) IBOutlet UILabel *countdownLabel;
 @property (nonatomic, weak) IBOutlet UIButton *startStopButton;
 
@@ -31,10 +30,9 @@
     [super viewDidLoad];
     
     self.title = self.timerModel.name;
-    self.durationLabel.text = [NSString stringWithFormat:@"%d min %d sec",
+    self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
                                self.timerModel.duration / 60,
                                self.timerModel.duration % 60];
-    self.countdownLabel.text = @"Timer not started.";
     
     [self.timerModel addObserver:self
                       forKeyPath:@"duration"
@@ -78,8 +76,11 @@
         // Timer is running and button is pressed. Stop timer.
         
         [self.navigationItem setHidesBackButton:NO animated:YES];
-        self.countdownLabel.text = @"Timer stopped.";
+        self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
+                                    self.timerModel.duration / 60,
+                                    self.timerModel.duration % 60];
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
         [self.timer invalidate];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
     }
@@ -89,6 +90,7 @@
         
         [self.navigationItem setHidesBackButton:YES animated:YES];
         [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
         self.timeRemaining = self.timerModel.duration;
         self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
                                     self.timeRemaining / 60,
@@ -141,9 +143,12 @@
     }
     else
     {
-        self.countdownLabel.text = @"Timer completed.";
+        self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
+                                    self.timerModel.duration / 60,
+                                    self.timerModel.duration % 60];
         [self.timer invalidate];
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
         [self notifyUser:@"Coffee Timer Completed!"];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
         [self.navigationItem setHidesBackButton:NO animated:YES];
@@ -159,9 +164,12 @@
 {
     if ([keyPath isEqualToString:@"duration"])
     {
-        self.durationLabel.text = [NSString stringWithFormat:@"%d min %d sec",
-                                   self.timerModel.duration / 60,
-                                   self.timerModel.duration % 60];
+        if (!self.timer)
+        {
+            self.countdownLabel.text = [NSString stringWithFormat:@"%d min %d sec",
+                                       self.timerModel.duration / 60,
+                                       self.timerModel.duration % 60];
+        }
     }
     else if ([keyPath isEqualToString:@"name"])
     {

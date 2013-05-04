@@ -43,6 +43,13 @@
     {
         self.timerTypeSegmentedControl.selectedSegmentIndex = 1;
     }
+    
+    [self.timerTypeSegmentedControl
+     setTitle:NSLocalizedString(@"Coffee", @"Segmented control coffee title")
+     forSegmentAtIndex:0];
+    [self.timerTypeSegmentedControl
+     setTitle:NSLocalizedString(@"Tea", @"Segmented control tea title")
+     forSegmentAtIndex:1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,20 +82,20 @@
 {
     if (numberOfMinutes == 1)
     {
-        self.minutesLabel.text = @"1 Minute";
+        self.minutesLabel.text = NSLocalizedString(@"1 Minute", @"1 Minute singular text");
     }
     else
     {
-        self.minutesLabel.text = [NSString stringWithFormat:@"%d Minutes", numberOfMinutes];
+        self.minutesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Minutes", @"Minute plural text"), numberOfMinutes];
     }
     
     if (numberOfSeconds == 1)
     {
-        self.secondsLabel.text = @"1 Second";
+        self.secondsLabel.text = NSLocalizedString(@"1 Second", @"Seconds singular text");
     }
     else
     {
-        self.secondsLabel.text = [NSString stringWithFormat:@"%d Seconds", numberOfSeconds];
+        self.secondsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d Seconds", @"Seconds plural text"), numberOfSeconds];
     }
 }
 

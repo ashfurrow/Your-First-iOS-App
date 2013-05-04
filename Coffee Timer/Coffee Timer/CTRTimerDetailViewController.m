@@ -79,7 +79,7 @@
         self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
                                     self.timerModel.duration / 60,
                                     self.timerModel.duration % 60];
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"Start", @"Start button text") forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
         [self.timer invalidate];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
@@ -89,7 +89,7 @@
         // Timer is not running and button is pressed. Start timer.
         
         [self.navigationItem setHidesBackButton:YES animated:YES];
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"Stop", @"Stop button text") forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
         self.timeRemaining = self.timerModel.duration;
         self.countdownLabel.text = [NSString stringWithFormat:@"%d:%02d",
@@ -102,7 +102,7 @@
                                                      repeats:YES];
         
         self.backgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-            [self notifyUser:@"Coffee Timer stopped running."];
+            [self notifyUser:NSLocalizedString(@"Coffee Timer stopped running.", @"Application was terminated in background notification text")];
         }];
     }
 }
@@ -113,17 +113,17 @@
 {
     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
     {
-        [[[UIAlertView alloc] initWithTitle:@"Coffee Timer"
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Coffee Timer", @"User notification title text")
                                     message:alert
                                    delegate:nil
                           cancelButtonTitle:nil
-                          otherButtonTitles:@"OK", nil] show];
+                          otherButtonTitles:NSLocalizedString(@"OK", @"User notification alert button text"), nil] show];
     }
     else
     {
         UILocalNotification *notification = [[UILocalNotification alloc] init];
         notification.alertBody = alert;
-        notification.alertAction = @"OK";
+        notification.alertAction = NSLocalizedString(@"OK", "User local notification OK button text");
         notification.fireDate = nil;
         notification.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
@@ -147,9 +147,9 @@
                                     self.timerModel.duration / 60,
                                     self.timerModel.duration % 60];
         [self.timer invalidate];
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+        [self.startStopButton setTitle:NSLocalizedString(@"Start", @"Start button text") forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
-        [self notifyUser:@"Coffee Timer Completed!"];
+        [self notifyUser:NSLocalizedString(@"Coffee Timer Completed!", @"Coffee timer completed alert message")];
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTaskIdentifier];
         [self.navigationItem setHidesBackButton:NO animated:YES];
     }

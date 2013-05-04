@@ -1,0 +1,24 @@
+
+/* Class = "IBUILabel"; text = "Minutes"; ObjectID = "5n3-kq-6zY"; */
+"5n3-kq-6zY.text" = "Minutes";
+
+/* Class = "IBUIButton"; normalTitle = "Start"; ObjectID = "8QK-MZ-DxU"; */
+"8QK-MZ-DxU.normalTitle" = "Commence";
+
+/* Class = "IBUITextField"; placeholder = "Name of Coffee"; ObjectID = "DdR-29-iNw"; */
+"DdR-29-iNw.placeholder" = "Nom de café";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "Gm8-fH-rP6"; */
+"Gm8-fH-rP6.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Seconds"; ObjectID = "JFJ-sP-t1h"; */
+"JFJ-sP-t1h.text" = "Secondes";
+
+/* Class = "IBUILabel"; text = "4:00"; ObjectID = "JyD-hy-Wih"; */
+"JyD-hy-Wih.text" = "4:00";
+
+/* Class = "IBUISegmentedControl"; YRz-5X-uQ2.segmentTitles[0] = "Coffee"; ObjectID = "YRz-5X-uQ2"; */
+"YRz-5X-uQ2.segmentTitles[0]" = "Café";
+
+/* Class = "IBUISegmentedControl"; YRz-5X-uQ2.segmentTitles[1] = "Tea"; ObjectID = "YRz-5X-uQ2"; */
+"YRz-5X-uQ2.segmentTitles[1]" = "Thé";

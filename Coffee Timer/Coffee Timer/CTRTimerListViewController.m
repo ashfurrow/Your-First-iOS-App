@@ -31,12 +31,6 @@ enum {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.coffeeTimers = @[[[CTRTimerModel alloc] initWithName:NSLocalizedString(@"Columbian", @"Default Columbian coffee name") duration:240 type:CTRTimerModelTypeCoffee],
-                          [[CTRTimerModel alloc] initWithName:NSLocalizedString(@"Mexican", @"Default Mexian coffee name") duration:200 type:CTRTimerModelTypeCoffee]];
-    self.teaTimers = @[[[CTRTimerModel alloc] initWithName:NSLocalizedString(@"Green Tea", @"Default green tea name") duration:400 type:CTRTimerModelTypeTea],
-                       [[CTRTimerModel alloc] initWithName:NSLocalizedString(@"Oolong", @"Default oolong tea name") duration:300 type:CTRTimerModelTypeTea],
-                       [[CTRTimerModel alloc] initWithName:NSLocalizedString(@"Rooibos", @"Default rooibos tea name") duration:480 type:CTRTimerModelTypeTea]];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
@@ -92,7 +86,7 @@ enum {
             CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
             viewController.creatingNewTimer = YES;
             viewController.delegate = self;
-            viewController.timerModel = [[CTRTimerModel alloc] initWithName:@"" duration:240 type:CTRTimerModelTypeCoffee];
+//            viewController.timerModel = [[CTRTimerModel alloc] initWithName:@"" duration:240 type:CTRTimerModelTypeCoffee];
         }
     }
 }

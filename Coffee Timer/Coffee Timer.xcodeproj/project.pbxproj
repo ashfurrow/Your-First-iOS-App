@@ -24,12 +24,11 @@
 		5E964D8216F4DD080074FB6A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8016F4DD080074FB6A /* InfoPlist.strings */; };
 		5E964D8416F4DD080074FB6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D8316F4DD080074FB6A /* main.m */; };
 		5E964D8816F4DD080074FB6A /* CTRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */; };
-		5E964D8A16F4DD080074FB6A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8916F4DD080074FB6A /* Default.png */; };
-		5E964D8C16F4DD080074FB6A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8B16F4DD080074FB6A /* Default@2x.png */; };
-		5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */; };
 		5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */; };
-		5E964DCD16FBD4890074FB6A /* CTRTimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */; };
 		5EA5D6DF17349AE700E729CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5D6E117349AE700E729CA /* Localizable.strings */; };
+		5EA5D71617369F0800E729CA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EA5D71517369F0800E729CA /* CoreData.framework */; };
+		5EA5D7501736AADF00E729CA /* CoffeeTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5D74E1736AADF00E729CA /* CoffeeTimer.xcdatamodeld */; };
+		5EA5D7531736AD1500E729CA /* CTRTimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5D7521736AD1500E729CA /* CTRTimerModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,13 +59,15 @@
 		5E964D8916F4DD080074FB6A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5E964D8B16F4DD080074FB6A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5E964D8D16F4DD080074FB6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5E964DCB16FBD4890074FB6A /* CTRTimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerModel.h; sourceTree = "<group>"; };
-		5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerModel.m; sourceTree = "<group>"; };
 		5EA5D6DA17348D7A00E729CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		5EA5D6DB17348E3800E729CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
 		5EA5D6DC17348E3800E729CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5EA5D6E017349AE700E729CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5EA5D6E217349B2400E729CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = file; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5EA5D6E017349AE700E729CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5EA5D6E217349B2400E729CA /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5EA5D71517369F0800E729CA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5EA5D74F1736AADF00E729CA /* CoffeeTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoffeeTimer.xcdatamodel; sourceTree = "<group>"; };
+		5EA5D7511736AD1500E729CA /* CTRTimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRTimerModel.h; sourceTree = "<group>"; };
+		5EA5D7521736AD1500E729CA /* CTRTimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRTimerModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EA5D71617369F0800E729CA /* CoreData.framework in Frameworks */,
 				5E964D7816F4DD080074FB6A /* UIKit.framework in Frameworks */,
 				5E964D7A16F4DD080074FB6A /* Foundation.framework in Frameworks */,
 				5E964D7C16F4DD080074FB6A /* CoreGraphics.framework in Frameworks */,
@@ -99,8 +101,8 @@
 		5E5FC4B916FE59010086DA7E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5E964DCB16FBD4890074FB6A /* CTRTimerModel.h */,
-				5E964DCC16FBD4890074FB6A /* CTRTimerModel.m */,
+				5EA5D7511736AD1500E729CA /* CTRTimerModel.h */,
+				5EA5D7521736AD1500E729CA /* CTRTimerModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -140,6 +142,7 @@
 		5E964D7616F4DD080074FB6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EA5D71517369F0800E729CA /* CoreData.framework */,
 				5E964D7716F4DD080074FB6A /* UIKit.framework */,
 				5E964D7916F4DD080074FB6A /* Foundation.framework */,
 				5E964D7B16F4DD080074FB6A /* CoreGraphics.framework */,
@@ -154,6 +157,7 @@
 				5E6CA0A51730973900E4EC3A /* Images */,
 				5E964D8616F4DD080074FB6A /* CTRAppDelegate.h */,
 				5E964D8716F4DD080074FB6A /* CTRAppDelegate.m */,
+				5EA5D74E1736AADF00E729CA /* CoffeeTimer.xcdatamodeld */,
 				5E964D8F16F4DD090074FB6A /* MainStoryboard.storyboard */,
 				5E5FC4B816FE58F30086DA7E /* View Controllers */,
 				5E5FC4B916FE59010086DA7E /* Models */,
@@ -231,9 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E964D8216F4DD080074FB6A /* InfoPlist.strings in Resources */,
-				5E964D8A16F4DD080074FB6A /* Default.png in Resources */,
-				5E964D8C16F4DD080074FB6A /* Default@2x.png in Resources */,
-				5E964D8E16F4DD080074FB6A /* Default-568h@2x.png in Resources */,
 				5E964D9116F4DD090074FB6A /* MainStoryboard.storyboard in Resources */,
 				5E6CA0A21730973000E4EC3A /* stop@2x.png in Resources */,
 				5E6CA0A31730973000E4EC3A /* start@2x.png in Resources */,
@@ -256,10 +257,11 @@
 			files = (
 				5E964D8416F4DD080074FB6A /* main.m in Sources */,
 				5E964D8816F4DD080074FB6A /* CTRAppDelegate.m in Sources */,
-				5E964DCD16FBD4890074FB6A /* CTRTimerModel.m in Sources */,
 				5E5FC4B716FE58E30086DA7E /* CTRTimerDetailViewController.m in Sources */,
 				5E5FC4BC16FF506D0086DA7E /* CTRTimerEditViewController.m in Sources */,
 				5E127FE91708C00900FEBC11 /* CTRTimerListViewController.m in Sources */,
+				5EA5D7501736AADF00E729CA /* CoffeeTimer.xcdatamodeld in Sources */,
+				5EA5D7531736AD1500E729CA /* CTRTimerModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +398,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EA5D74E1736AADF00E729CA /* CoffeeTimer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EA5D74F1736AADF00E729CA /* CoffeeTimer.xcdatamodel */,
+			);
+			currentVersion = 5EA5D74F1736AADF00E729CA /* CoffeeTimer.xcdatamodel */;
+			path = CoffeeTimer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5E964D6C16F4DD080074FB6A /* Project object */;
 }

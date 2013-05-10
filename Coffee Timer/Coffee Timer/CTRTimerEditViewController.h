@@ -9,11 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CTRTimerModel.h"
 
-//typedef enum {
-//    CTRTimerEditViewControllerTimerTypeCoffee = 0,
-//    CTRTimerEditViewControllerTimerTypeTea
-//}CTRTimerEditViewControllerTimerType;
-
 @class CTRTimerEditViewController;
 
 @protocol CTRTimerEditViewControllerDelegate <NSObject>

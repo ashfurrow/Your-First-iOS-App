@@ -5,3 +5,7 @@ Sample code for my upcoming book. I start out small and incrementally introduce 
 
 ![http://static.ashfurrow.com/github/rootView.png](Root view)
 
+![http://static.ashfurrow.com/github/editView.png](Edit view)
+
+![http://static.ashfurrow.com/github/timerView.png](timer view)
+

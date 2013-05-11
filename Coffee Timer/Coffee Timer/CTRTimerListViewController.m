@@ -22,6 +22,7 @@ enum {
 @interface CTRTimerListViewController ()
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, assign) BOOL userReorderingCells;
 
 @end
 
@@ -141,6 +142,8 @@ enum {
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
+    if (self.userReorderingCells) return;
+    
     switch(type)
     {
         case NSFetchedResultsChangeInsert:
@@ -156,21 +159,22 @@ enum {
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         case NSFetchedResultsChangeMove:
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView moveRowAtIndexPath:indexPath toIndexPath:newIndexPath];
             break;
     }
 }
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
+    if (self.userReorderingCells) return;
+    
     [self.tableView beginUpdates];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    if (self.userReorderingCells) return;
+    
     [self.tableView endUpdates];
 }
 
@@ -232,6 +236,8 @@ enum {
 moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
        toIndexPath:(NSIndexPath *)destinationIndexPath
 {
+    self.userReorderingCells = YES;
+    
     NSMutableArray *sectionObjects = [[[self.fetchedResultsController sections][sourceIndexPath.section] objects] mutableCopy];
     
     // Grab the item we're moving.
@@ -251,6 +257,8 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
     }
     
     [movedObject.managedObjectContext save:nil];
+    
+    self.userReorderingCells = NO;
 }
 
 #pragma mark - Table view delegate
@@ -302,7 +310,8 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
         // This is coming from the coffee section, so return
         // the last index path in that section.
         
-        return [NSIndexPath indexPathForRow:[self.fetchedResultsController.sections[CTRTimerListCoffeeSection] numberOfObjects] - 1 inSection:CTRTimerListCoffeeSection];
+        NSInteger numberOfCells = [self.fetchedResultsController.sections[CTRTimerListCoffeeSection] numberOfObjects];
+        return [NSIndexPath indexPathForRow:numberOfCells - 1 inSection:CTRTimerListCoffeeSection];
     }
     else if (sourceIndexPath.section == CTRTimerListTeaSection)
     {

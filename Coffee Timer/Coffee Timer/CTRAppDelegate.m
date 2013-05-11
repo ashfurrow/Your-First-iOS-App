@@ -62,6 +62,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         }
         [[NSUserDefaults standardUserDefaults] setBool:YES
                                                 forKey:@"loadedDefaults"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    NSError *error;
+    if (![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Could not save managed object context: %@", error);
     }
     
     return YES;

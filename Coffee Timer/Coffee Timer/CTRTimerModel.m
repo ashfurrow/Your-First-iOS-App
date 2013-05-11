@@ -14,5 +14,6 @@
 @dynamic name;
 @dynamic duration;
 @dynamic type;
+@dynamic displayOrder;
 
 @end

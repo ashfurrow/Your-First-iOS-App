@@ -11,6 +11,8 @@
 #import "CTRTimerEditViewController.h"
 #import "CTRTimerModel.h"
 
+#import "CTRAppDelegate.h"
+
 enum {
     CTRTimerListCoffeeSection = 0,
     CTRTimerListTeaSection,
@@ -19,8 +21,7 @@ enum {
 
 @interface CTRTimerListViewController ()
 
-@property (nonatomic, strong) NSArray *coffeeTimers;
-@property (nonatomic, strong) NSArray *teaTimers;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -33,6 +34,12 @@ enum {
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    NSError *fetchError;
+    if (![self.fetchedResultsController performFetch:&fetchError])
+    {
+        NSLog(@"Error fetching: %@", fetchError);
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -45,6 +52,7 @@ enum {
     }
 }
 
+//TODO: Explain
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([sender isKindOfClass:[UITableViewCell class]])
@@ -53,15 +61,7 @@ enum {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
         // Determine the model represented by the tapped cell.
-        CTRTimerModel *model;
-        if (indexPath.section == CTRTimerListCoffeeSection)
-        {
-            model = self.coffeeTimers[indexPath.row];
-        }
-        else if (indexPath.section == CTRTimerListTeaSection)
-        {
-            model = self.teaTimers[indexPath.row];
-        }
+        CTRTimerModel *model = [self timerModelForIndexPath:indexPath];
         
         // Determine which segue is being prepared for
         if ([segue.identifier isEqualToString:@"pushDetail"])
@@ -82,11 +82,16 @@ enum {
     {
         if ([segue.identifier isEqualToString:@"newTimer"])
         {
+            NSManagedObjectContext *managedObjectContext = [(CTRAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+            CTRTimerModel *model = [NSEntityDescription
+                                    insertNewObjectForEntityForName:@"CTRTimerModel"
+                                    inManagedObjectContext:managedObjectContext];
+            
             UINavigationController *navigationController = segue.destinationViewController;
             CTRTimerEditViewController *viewController = (CTRTimerEditViewController *)navigationController.topViewController;
             viewController.creatingNewTimer = YES;
             viewController.delegate = self;
-//            viewController.timerModel = [[CTRTimerModel alloc] initWithName:@"" duration:240 type:CTRTimerModelTypeCoffee];
+            viewController.timerModel = model;
         }
     }
 }
@@ -108,18 +113,67 @@ enum {
 
 -(CTRTimerModel *)timerModelForIndexPath:(NSIndexPath *)indexPath
 {
-    CTRTimerModel *timerModel;
-    if (indexPath.section == CTRTimerListCoffeeSection)
-    {
-        // The coffee timer section
-        timerModel = self.coffeeTimers[indexPath.row];
-    }
-    else if (indexPath.section == CTRTimerListTeaSection)
-    {
-        timerModel = self.teaTimers[indexPath.row];
-    }
+    CTRTimerModel *timerModel = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     return timerModel;
+}
+
+#pragma mark - Overridden properties
+
+-(NSFetchedResultsController *)fetchedResultsController
+{
+    if (!_fetchedResultsController)
+    {
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"CTRTimerModel"];
+        fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"type" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
+        NSManagedObjectContext *managedObjectContext = [(CTRAppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:managedObjectContext sectionNameKeyPath:@"type" cacheName:nil];
+        _fetchedResultsController.delegate = self;
+    }
+    
+    return _fetchedResultsController;
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate Methods
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id) anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+        case NSFetchedResultsChangeMove:
+            [self.tableView reloadData];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+-(void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Table view data source
@@ -127,25 +181,14 @@ enum {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections, in our case, the number of arrays we're displaying
-    return CTRTimerListNumberOfSections;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (section == CTRTimerListCoffeeSection)
-    {
-        // The coffee timer section
-        return self.coffeeTimers.count;
-    }
-    else if (section == CTRTimerListTeaSection)
-    {
-        // The tea timer section
-        return self.teaTimers.count;
-    }
+    id<NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
     
-    // This line is just to silence the compiler warning
-    return 0;
+    return sectionInfo.numberOfObjects;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,47 +225,34 @@ enum {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         
-        if (indexPath.section == CTRTimerListCoffeeSection)
-        {
-            NSMutableArray *mutableArray = [self.coffeeTimers mutableCopy];
-            [mutableArray removeObjectAtIndex:indexPath.row];
-            self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
-        }
-        else if (indexPath.section == CTRTimerListTeaSection)
-        {
-            NSMutableArray *mutableArray = [self.teaTimers mutableCopy];
-            [mutableArray removeObjectAtIndex:indexPath.row];
-            self.teaTimers = [NSArray arrayWithArray:mutableArray];
-        }
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        CTRTimerModel *timerModel = [self timerModelForIndexPath:indexPath];
+        [timerModel.managedObjectContext deleteObject:timerModel];
     }
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+ - (void)tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+       toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NSMutableArray *mutableArray;
-    if (sourceIndexPath.section == CTRTimerListCoffeeSection)
+    NSMutableArray *sectionObjects = [[[self.fetchedResultsController sections][sourceIndexPath.section] objects] mutableCopy];
+    
+    // Grab the item we're moving.
+    NSManagedObject *movedObject = [[self fetchedResultsController] objectAtIndexPath:sourceIndexPath];
+    
+    // Remove the object we're moving from the array.
+    [sectionObjects removeObject:movedObject];
+    // Now re-insert it at the destination.
+    [sectionObjects insertObject:movedObject atIndex:destinationIndexPath.row];
+    
+    // All of the objects are now in their correct order. Update each
+    // object's displayOrder field by iterating through the array.
+    for (NSInteger i = 0; i < sectionObjects.count; i++)
     {
-        mutableArray = [self.coffeeTimers mutableCopy];
-    }
-    else if (sourceIndexPath.section == CTRTimerListTeaSection)
-    {
-        mutableArray = [self.teaTimers mutableCopy];
+        CTRTimerModel *model = sectionObjects[i];
+        model.displayOrder = i;
     }
     
-    CTRTimerModel *model = mutableArray[sourceIndexPath.row];
-    [mutableArray removeObjectAtIndex:sourceIndexPath.row];
-    [mutableArray insertObject:model atIndex:destinationIndexPath.row];
-    
-    if (sourceIndexPath.section == CTRTimerListCoffeeSection)
-    {
-        self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
-    }
-    else if (sourceIndexPath.section == CTRTimerListTeaSection)
-    {
-        self.teaTimers = [NSArray arrayWithArray:mutableArray];
-    }
+    [movedObject.managedObjectContext save:nil];
 }
 
 #pragma mark - Table view delegate
@@ -274,7 +304,7 @@ enum {
         // This is coming from the coffee section, so return
         // the last index path in that section.
         
-        return [NSIndexPath indexPathForRow:self.coffeeTimers.count - 1 inSection:CTRTimerListCoffeeSection];
+        return [NSIndexPath indexPathForRow:[self.fetchedResultsController.sections[CTRTimerListCoffeeSection] numberOfObjects] - 1 inSection:CTRTimerListCoffeeSection];
     }
     else if (sourceIndexPath.section == CTRTimerListTeaSection)
     {
@@ -291,42 +321,15 @@ enum {
 
 -(void)timerEditViewControllerDidSaveTimerModel:(CTRTimerEditViewController *)viewController
 {
-    CTRTimerModelType type = viewController.timerModel.type;
-    
-    if (type == CTRTimerModelTypeCoffee)
-    {
-        if (![self.coffeeTimers containsObject:viewController.timerModel])
-        {
-            self.coffeeTimers = [self.coffeeTimers arrayByAddingObject:viewController.timerModel];
-        }
-        
-        if ([self.teaTimers containsObject:viewController.timerModel])
-        {
-            NSMutableArray *mutableArray = [self.teaTimers mutableCopy];
-            [mutableArray removeObject:viewController.timerModel];
-            self.teaTimers = [NSArray arrayWithArray:mutableArray];
-        }
-    }
-    else if (type == CTRTimerModelTypeTea)
-    {
-        if (![self.teaTimers containsObject:viewController.timerModel])
-        {
-            self.teaTimers = [self.teaTimers arrayByAddingObject:viewController.timerModel];
-        }
-        
-        
-        if ([self.coffeeTimers containsObject:viewController.timerModel])
-        {
-            NSMutableArray *mutableArray = [self.coffeeTimers mutableCopy];
-            [mutableArray removeObject:viewController.timerModel];
-            self.coffeeTimers = [NSArray arrayWithArray:mutableArray];
-        }
-    }
+    [viewController.timerModel.managedObjectContext save:nil];
 }
 
 -(void)timerEditViewControllerDidCancel:(CTRTimerEditViewController *)viewController
 {
-    // Nothing to do for now
+    if (viewController.creatingNewTimer)
+    {
+        [viewController.timerModel.managedObjectContext deleteObject:viewController.timerModel];
+    }
 }
 
 @end

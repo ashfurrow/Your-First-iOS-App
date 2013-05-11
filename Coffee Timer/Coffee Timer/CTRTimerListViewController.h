@@ -10,6 +10,6 @@
 
 #import "CTRTimerEditViewController.h"
 
-@interface CTRTimerListViewController : UITableViewController <CTRTimerEditViewControllerDelegate>
+@interface CTRTimerListViewController : UITableViewController <CTRTimerEditViewControllerDelegate, NSFetchedResultsControllerDelegate>
 
 @end

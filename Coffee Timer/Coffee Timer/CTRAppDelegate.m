@@ -27,6 +27,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                                     insertNewObjectForEntityForName:@"CTRTimerModel"
                                     inManagedObjectContext:self.managedObjectContext];
             
+            model.displayOrder = i;
             switch (i) {
                 case 0:
                     model.name =

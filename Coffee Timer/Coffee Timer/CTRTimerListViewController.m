@@ -52,7 +52,6 @@ enum {
     }
 }
 
-//TODO: Explain
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([sender isKindOfClass:[UITableViewCell class]])
@@ -157,7 +156,6 @@ enum {
                                   withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         case NSFetchedResultsChangeMove:
-            [self.tableView reloadData];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath]

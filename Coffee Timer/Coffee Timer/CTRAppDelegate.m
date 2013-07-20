@@ -31,13 +31,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             switch (i) {
                 case 0:
                     model.name =
-                        NSLocalizedString(@"Columbian", @"Default Columbian coffee name");
+                        NSLocalizedString(@"Colombian", @"Default Colombian coffee name");
                     model.duration = 240;
                     model.type = CTRTimerModelTypeCoffee;
                     break;
                 case 1:
                     model.name =
-                        NSLocalizedString(@"Mexican", @"Default Mexian coffee name");
+                        NSLocalizedString(@"Mexican", @"Default Mexican coffee name");
                     model.duration = 200;
                     model.type = CTRTimerModelTypeCoffee;
                     break;
